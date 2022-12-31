@@ -1,0 +1,19 @@
+{
+  "name": "semaphore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1-shared.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ultexplorer/semafore.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ultexplorer/semafore/issues"
+  },
+  "homepage": "https://github.com/ultexplorer/semafore#readme"
+}
