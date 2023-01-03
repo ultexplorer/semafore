@@ -16,24 +16,24 @@ class BinarySemaphore {
     }
     leave(){
         if(this.lock[0] === UNLOCKED){
-            throw new Error(('Cannot leave unlocked BinarySemaphore'));
+            throw new Error('Cannot leave unlocked BinarySemaphore');
         }
         this.lock[0] = UNLOCKED;
     }
 }
 
 if(isMainThread){
-    const buffer = new SharedArrayBuffer(11)
+    const buffer = new SharedArrayBuffer(11);
     const semaphore = new BinarySemaphore(buffer, 0, true);
-    console.dir(({ semaphore }));
+    console.dir({ semaphore });
     new Worker(__filename, { workerData: buffer });
     new Worker(__filename, { workerData: buffer });
 }else{
     const { threadId, workerData } = threads;
     const semaphore = new BinarySemaphore(workerData);
-    const array = new Int8Array(workerData, 1)
+    const array = new Int8Array(workerData, 1);
+    semaphore.enter();
     setInterval(() => {
-        semaphore.enter();
         let value = threadId === 1 ? 1 : -1;
         for(let i = 0; i < 10; i++){
             array[i] += value;
