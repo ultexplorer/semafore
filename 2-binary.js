@@ -36,7 +36,7 @@ if(isMainThread){
     setInterval(() => {
         let value = threadId === 1 ? 1 : -1;
         for (let i = 0; i < 10; i++) {
-            array[0] += value;
+            array[i] += value;
         }
         console.dir([threadId, array]);
         semaphore.leave();
