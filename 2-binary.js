@@ -32,9 +32,9 @@ if(isMainThread){
     const {threadId, workerData} = threads;
     const semaphore = new BinarySemaphore(workerData);
     const array = new Int8Array(workerData, 1);
-    semaphore.enter();
+    let value = threadId === 1 ? 1 : -1;
     setInterval(() => {
-        let value = threadId === 1 ? 1 : -1;
+        semaphore.enter();
         for (let i = 0; i < 10; i++) {
             array[i] += value;
         }
